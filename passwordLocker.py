@@ -52,7 +52,24 @@ class Credential():
         Credential.credential_list.remove(self)
 
   
+    @classmethod
+    def find_credential(cls,username):
 
+        """
+        Method that takes in a username and returns a credential that matches that account_name.
+        """
+        for cred in cls.credential_list:
+            if cred.username == username:
+                return cred
+
+    @classmethod
+    def if_credential_exist(cls,username):
+        for Credential.username == username:
+            return True
+        return False
+
+        
+                        
     # def delete_user(self):
 
     #     '''

@@ -93,5 +93,19 @@ class TestClassCredentials(unittest.TestCase):
         self.assertEqual(len(Credential.credential_list),1)
 
 
+def test_find_credential(self):
+
+    self.new_credential.save_credentials()
+    test_credential = Credential("Yahoo","RaheBrhane","Rahel45xs")
+    test_credential.save_credentials()
+
+    username_credential = Credential.find_credential("RaheBrhane")
+    self.assertEqual(username_credential.username,test_credential.username)
+
+
+
+
+
+
 if __name__ == '__main__':
     unittest.main()    
