@@ -1,3 +1,6 @@
+#!/usr/bin/env python3.6
+import pyperclip
+
 
 class User:
 
@@ -70,6 +73,8 @@ class Credential():
             if cred.username == username:
                 return cred
 
+              
+
     @classmethod
     def credential_exist(cls,username):
         for cred in cls.credential_list:
@@ -85,7 +90,10 @@ class Credential():
         """
         return cls.credential_list
 
-   
+    @classmethod
+    def copy_password(cls,username):
+        found_credential = Credential.find_credential(username)
+        pyperclip.copy(found_credential.password)
 
 
         

@@ -1,5 +1,8 @@
+#!/usr/bin/env python3.6
+import pyperclip
 import unittest
 from passwordLocker import User, Credential
+
 
 class TestClassUser(unittest.TestCase):
 
@@ -104,6 +107,15 @@ class TestClassCredentials(unittest.TestCase):
         username_credential = Credential.find_credential("RaheBrhane")
         self.assertEqual(username_credential.username,test_credential.username)
 
+    def test_copy_password(self):
+        '''
+        Test to confirm that we are copying the email address from a found contact
+        '''
+        self.new_credential.save_credentials()
+        Credential.copy_password("uwas-dian")
+
+        self.assertEqual(self.new_credential.password, pyperclip.paste())    
+
     def test_credential_exist(self):
         """
         test to check if we can return a true or false based on whether we find or can't find the credential.
@@ -124,7 +136,7 @@ class TestClassCredentials(unittest.TestCase):
         self.assertEqual(Credential.display_credentials(),Credential.credential_list)
 
 
-
+    
 
 
 if __name__ == '__main__':
