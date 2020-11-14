@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.6
 import pyperclip
-
+import random
 
 class User:
 
@@ -30,11 +30,23 @@ class User:
         '''
         User.user_list.remove(self)
 
-        
+    
 
 class Credential():
 
     credential_list = []
+
+    @classmethod
+    def user_verify (cls,userName,password):
+        """
+        method to verify whether the user is in our user_list or not
+        """
+        users = ""
+        for users in User.user_list:
+            if(user.userName == password and user.password == password):
+
+                users == user.userName
+        return users;        
 
     def __init__(self,accountName,username,password):
 
@@ -95,6 +107,11 @@ class Credential():
         found_credential = Credential.find_credential(username)
         pyperclip.copy(found_credential.password)
 
+    def generate_password():
+
+        """Generate a random password string of letters and digits and special characters"""
+        random_number = random.randint(000,111)
+        return random_number
 
         
 
