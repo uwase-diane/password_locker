@@ -19,7 +19,15 @@ class User:
 
     @classmethod
     def display_user(cls):
-        return cls.user_list    
+        return cls.user_list  
+
+    def delete_user(self):
+        '''
+        delete_account method deletes a  saved account from the list
+        '''
+        User.user_list.remove(self)
+
+        
 
 class Credential():
 
@@ -70,14 +78,14 @@ class Credential():
             
         return False
 
+    @classmethod
+    def display_credentials(cls):
+        """
+        Method that returns all items in the credentials list
+        """
+        return cls.credential_list
 
-
-    # def delete_user(self):
-
-    #     '''
-    #     delete_account method deletes a  saved account from the list
-    #     '''
-    #     User.user_list.remove(self)
+   
 
 
         

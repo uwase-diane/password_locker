@@ -116,6 +116,15 @@ class TestClassCredentials(unittest.TestCase):
         found_user = Credential.credential_exist("RaheBrhane")
         self.assertTrue(found_user)
 
+    def test_display_credential(self):
+
+        '''
+        method that displays all the credentials that has been saved by the user
+        '''
+        self.assertEqual(Credential.display_credentials(),Credential.credential_list)
+
+
+
 
 
 if __name__ == '__main__':
