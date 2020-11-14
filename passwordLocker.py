@@ -63,13 +63,15 @@ class Credential():
                 return cred
 
     @classmethod
-    def if_credential_exist(cls,username):
-        for Credential.username == username:
-            return True
+    def credential_exist(cls,username):
+        for cred in cls.credential_list:
+            if cred.username == username:
+                return True
+            
         return False
 
-        
-                        
+
+
     # def delete_user(self):
 
     #     '''

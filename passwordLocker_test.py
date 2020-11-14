@@ -93,17 +93,28 @@ class TestClassCredentials(unittest.TestCase):
         self.assertEqual(len(Credential.credential_list),1)
 
 
-def test_find_credential(self):
+    def test_find_credential(self):
+        """
+        test to check if we can find a credential entry by username and display the details of the credential
+        """ 
+        self.new_credential.save_credentials()
+        test_credential = Credential("Yahoo","RaheBrhane","Rahel45xs")
+        test_credential.save_credentials()
 
-    self.new_credential.save_credentials()
-    test_credential = Credential("Yahoo","RaheBrhane","Rahel45xs")
-    test_credential.save_credentials()
+        username_credential = Credential.find_credential("RaheBrhane")
+        self.assertEqual(username_credential.username,test_credential.username)
 
-    username_credential = Credential.find_credential("RaheBrhane")
-    self.assertEqual(username_credential.username,test_credential.username)
+    def test_credential_exist(self):
+        """
+        test to check if we can return a true or false based on whether we find or can't find the credential.
+        """
+        self.new_credential.save_credentials()
+        username_credential = Credential("Yahoo","RaheBrhane","Rahel45xs")
+        
+        username_credential.save_credentials()
 
-
-
+        found_user = Credential.credential_exist("RaheBrhane")
+        self.assertTrue(found_user)
 
 
 
