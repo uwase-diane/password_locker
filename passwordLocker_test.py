@@ -80,6 +80,18 @@ class TestClassCredentials(unittest.TestCase):
         test_credential.save_credentials()
         self.assertEqual(len(Credential.credential_list),2)
 
+    def test_detele_credential(self):
+
+        """
+        test method to test if we can remove an account credentials from our credentials_list
+        """
+        self.new_credential.save_credentials()
+        test_credential = Credential("Yahoo","RaheBrhane","Rahel45xs")
+        test_credential.save_credentials()
+
+        self.new_credential.delete_credentials()
+        self.assertEqual(len(Credential.credential_list),1)
+
 
 
 if __name__ == '__main__':
