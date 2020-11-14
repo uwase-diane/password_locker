@@ -1,7 +1,7 @@
 import unittest
-from passwordLocker import User
+from passwordLocker import User, Credential
 
-class TestClass(unittest.TestCase):
+class TestClassUser(unittest.TestCase):
 
     """
     A Test class that defines test cases for the User class.
@@ -30,6 +30,28 @@ class TestClass(unittest.TestCase):
         self.new_user.save_user()
         self.assertEqual(len(User.user_list),1)
 
+
+class TestClassCredentials(unittest.TestCase):
+
+    """
+    A test class that defines test cases for credentials class
+    """ 
+    def setUp(self):
+
+        """
+        Method that runs before each individual credentials test methods run.
+        """
+
+        self.new_credential = Credential('Instagram','uwas-dian','@August2016')
+
+    def test_init(self):
+
+        """
+        Test case to check if a new Credentials instance has been initialized correctly
+        """
+        self.assertEqual(self.new_credential.accountName,'Instagram')
+        self.assertEqual(self.new_credential.username,'uwas-dian')
+        self.assertEqual(self.new_credential.password,'@August2016')
 
 
 if __name__ == '__main__':
