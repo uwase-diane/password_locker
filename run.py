@@ -53,7 +53,7 @@ def save_credential(credentials):
     """
     Function to save Credentials to the credentials list
     """
-    credentials.save_credential()
+    credentials.save_credentials()
 
 def display_accounts_credentials():
     """
@@ -142,7 +142,7 @@ def main():
             print("Account Name: ")
             accountName = input().lower()
             print("Username: ")
-            userName = input()
+            username = input()
 
             while True:
                 print("TP -WRITE YOUR PASSWORD: \n GP - GENERATE YOUR PASSWORD")
@@ -156,9 +156,9 @@ def main():
                 else:
                     print("invalid password ")
 
-            save_credential(create_new_credential(accountName,userName,password))
+            save_credential(create_new_credential(accountName,username,password))
             print('\n')
-            print(f"Account Credential for: {accountName} \n- Username: {userName} \n- Password: {password} ")
+            print(f"Account Credential for: {accountName} \n- Username: {username} \n- Password: {password} ")
             print("\n")
         elif short_code == "dc":
             if display_accounts_credentials():
@@ -166,7 +166,7 @@ def main():
                 print('----------------------------')
 
                 for account in display_accounts_credentials():
-                    print(f"Acount:{account.accountName} \n UserName: {userName} \n Password: {password}")
+                    print(f"Acount:{account.accountName} \n UserName: {username} \n Password: {password}")
                     print("-----------------------------------------------------------------------------")
 
             else:
@@ -176,10 +176,10 @@ def main():
             print("SEARCH ACCOUNT NAME OF YOUR CHOICE")
             search_name = input().lower()
             if find_credential(search_name):
-                search_cred = find_credential(search_cred)
+                search_cred = find_credential(search_name)
                 print(f"Account Name: {search_cred.accountName}")
                 print('-----------------------------------------')
-                print(f"User Name: {search_cred.userName} Password: {search_cred.password}")
+                print(f"User Name: {search_cred.username} Password: {search_cred.password}")
                 print('--------------------------------------------------------------------')
 
             else:
