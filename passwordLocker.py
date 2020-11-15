@@ -107,11 +107,7 @@ class Credential():
         found_credential = Credential.find_credential(username)
         pyperclip.copy(found_credential.password)
 
-    def generate_password():
-
-        """Generate a random password string of letters and digits and special characters"""
-        random_number = random.randint(000,111)
-        return random_number
+    
 
         
 

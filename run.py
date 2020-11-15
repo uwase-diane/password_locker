@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.6
 import pyperclip
-
+import random
 from passwordLocker import User, Credential
 
 print("------------------------------------------")
@@ -84,11 +84,10 @@ def copy_password(username):
     return Credential.copy_password(username)
 
 def generate_password():
-    '''
-    generates a random password for the user.
-    '''
-    auto_password=Credential.generate_password()
-    return auto_password 
+
+        """Generate a random password string of letters and digits and special characters"""
+        random_number = random.randint(000,111)
+        return random_number
          
    
 
@@ -97,42 +96,122 @@ def main():
     short_code=input("").lower().strip()
 
     if short_code == 'cu':
-
+        print('-------')
         print("SIGN UP")
+        print('-------')
         username = input("USERNAME: ")
 
         while True:
             print(" pa -- Enter your password: \n gp -- Generate password")
-            password_Choice = input().lower().strip()
-            if password_Choice == 'pa':
+            p_Choice = input().lower().strip()
+            if p_Choice == 'pa':
                 password = input("Enter password\n")
                 break
-            elif password_Choice == 'gp':
+            elif p_Choice == 'gp':
                 password = generate_password()
                 break
             else:
                 print("INVALID PASSWORD ----PLEASE TRY AGAIN")
-                                   
 
-if __name__ == '__main__':
-    main()
+        save_user(create_user(username,password))
+        print('------------------------------------------------------------')
+        print(f"HELLO {username}, YOU ACCOUNT HAS BEEN CREATED SUCCESSFULLY")
+        print('------------------------------------------------------------')
 
+    elif short_code == "li":
+        print("------------------------------------------------------------")
+        print("ENTER YOUR USER NAME AND YOUR PASSWORD TO LOGIN: ")
+        print('------------------------------------------------------------')
+        username = input("USER NAME: ")
+        password = input("PASSWORD: ")
+        login = login_user(username,password)
 
+        if login_user == login:
+            print(f"HELLO {username}. WELCOME TO PASSWORD LOCKER MANAGER")
+            print('\n')
+    
+    while True:
+        print('--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------')
+        print("USE THOSE SHORT CODES: \n CC -create a new credential \n DC- Display credential \n FC- Find a credential \n GP-Generate password \n D-Delete credential \n EX- Exit the application \n")
+        print('--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------')
 
+        short_code = input().lower().strip()
+        if short_code == "cc":
+            print("CREATE NEW CREDENTIAL")
+            print("---------------------")
+            print("Account Name: ")
+            accountName = input().lower()
+            print("Username: ")
+            userName = input()
 
+            while True:
+                print("TP -WRITE YOUR PASSWORD: \n GP - GENERATE YOUR PASSWORD")
+                p_Choice = input().lower().strip()
+                if p_Choice == 'tp':
+                    password = input("ENTER YOUR OWN PASSWORD\n")
+                    break
+                elif p_Choice == 'gp':
+                    password = generate_password()
+                    break
+                else:
+                    print("invalid password ")
 
+            save_credential(create_new_credential(accountName,userName,password))
+            print('\n')
+            print(f"Account Credential for: {accountName} \n- Username: {userName} \n- Password: {password} ")
+            print("\n")
+        elif short_code == "dc":
+            if display_accounts_credentials():
+                print("HERE'S THE LIST OF ACCOUNTS: ")
+                print('----------------------------')
 
+                for account in display_accounts_credentials():
+                    print(f"Acount:{account.accountName} \n UserName: {userName} \n Password: {password}")
+                    print("-----------------------------------------------------------------------------")
 
+            else:
+                print("No credentials saved yet")
 
+        elif short_code == 'fc':
+            print("SEARCH ACCOUNT NAME OF YOUR CHOICE")
+            search_name = input().lower()
+            if find_credential(search_name):
+                search_cred = find_credential(search_cred)
+                print(f"Account Name: {search_cred.accountName}")
+                print('-----------------------------------------')
+                print(f"User Name: {search_cred.userName} Password: {search_cred.password}")
+                print('--------------------------------------------------------------------')
 
+            else:
+                print("Credential does not exist")
+                print('\n')
 
+            
+        elif short_code == "d":
+            print("DELETE ACCOUNTS YOU WANT")
+            search_name = input().lower()
+            if find_credential(search_name):
+                search_cred = find_credential(search_name)
+                print('--------------------------------')
+                search_cred.delete_credentials()
+                print('\n')
+                print(f"Your store credentials: {search_cred.accountName} deleted successfully")
+                print('\n')
 
+            else:
+                print("That credential does not exist")
 
+        elif short_code == 'gp':
+            password = generate_password()
+            print(f"{password} have been generated successfull") 
 
-
-
-
-
+        elif short_code == 'ex':
+            print("THANKS FOR USING PASSWORD LOCKER")
+            break
+        else:
+            print("WRONG ENTRY")  
+    else:
+        print("please enter a valid input to continue")                     
 
 
 if __name__ == '__main__':
