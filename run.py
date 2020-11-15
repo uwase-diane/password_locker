@@ -83,6 +83,7 @@ def copy_password(username):
     """
     return Credential.copy_password(username)
 
+
 def generate_password():
 
         """Generate a random password string of letters and digits and special characters"""
